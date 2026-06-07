@@ -3,6 +3,7 @@ package server
 import (
 	"devops-practice-1/logic"
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -24,7 +25,9 @@ func (h *Handlers) HandleIncrease(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 
-	json.NewEncoder(w).Encode(&res)
+	if err := json.NewEncoder(w).Encode(&res); err != nil {
+		log.Println(err)
+	}
 }
 
 func (h *Handlers) HandleOutput(w http.ResponseWriter, r *http.Request) {
@@ -33,7 +36,9 @@ func (h *Handlers) HandleOutput(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
-	json.NewEncoder(w).Encode(&res)
+	if err := json.NewEncoder(w).Encode(&res); err != nil {
+		log.Println(err)
+	}
 }
 
 func (h *Handlers) HanldeHealthcheck(w http.ResponseWriter, r *http.Request) {
@@ -42,5 +47,7 @@ func (h *Handlers) HanldeHealthcheck(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
-	json.NewEncoder(w).Encode(&res)
+	if err := json.NewEncoder(w).Encode(&res); err != nil {
+		log.Println(err)
+	}
 }

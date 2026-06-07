@@ -1,6 +1,9 @@
 package server
 
-import "net/http"
+import (
+	"errors"
+	"net/http"
+)
 
 type Server struct {
 	Handlers *Handlers
@@ -22,6 +25,13 @@ func NewServer(handlers *Handlers) *Server {
 	}
 }
 
-func (s *Server) Run() {
-	s.Server.ListenAndServe()
+func (s *Server) Run() error {
+	if err := s.Server.ListenAndServe(); err != nil {
+		if errors.Is(err, http.ErrServerClosed) {
+			return nil
+		}
+		return err
+	}
+
+	return nil
 }
