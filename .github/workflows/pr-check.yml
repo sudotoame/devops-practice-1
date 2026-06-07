@@ -1,0 +1,34 @@
+name: Pull-Request Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+
+      - name: lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+
+      - name: test
+        working-directory: src
+        run: go test -v .
+
+      - name: build binary
+        working-directory: src
+        run: go build .
+
+      - name: build docker image
+        run: docker build -t myservice:test .
