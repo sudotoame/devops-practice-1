@@ -7,9 +7,6 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src
 
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +21,7 @@ jobs:
         uses: golangci/golangci-lint-action@v6
         with:
           version: latest
+          working-directory: src
 
       - name: test
         working-directory: src
