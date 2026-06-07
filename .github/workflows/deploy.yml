@@ -40,4 +40,4 @@ jobs:
           docker compose pull
           docker compose up -d
           sleep 5
-          curl -f http://localhost:8080/health || exit 1
+          curl -f http://localhost:9091/health || exit 1
