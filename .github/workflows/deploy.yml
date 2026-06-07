@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy
         run: |
-          cd /opt/myservice
+          cd /home/yui/app
           docker compose pull
           docker compose up -d
           sleep 5
