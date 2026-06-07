@@ -1,3 +1,13 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE: ghcr.io/${{ github.repository }}
+
 jobs:
   deploy:
     runs-on: self-hosted
