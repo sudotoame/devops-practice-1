@@ -1,9 +1,9 @@
 FROM golang:1.25-alpine AS builder
-RUN apk add --no-cache git
 
 WORKDIR /app
 
-COPY src/* .
+COPY src/ .
+
 RUN go mod tidy
 RUN go build -o service .
 

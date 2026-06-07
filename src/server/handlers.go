@@ -1,10 +1,9 @@
 package server
 
 import (
+	"devops-practice-1/logic"
 	"encoding/json"
 	"net/http"
-
-	"github.com/sudotoame/devops-practice-1/logic"
 )
 
 type Handlers struct {

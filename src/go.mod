@@ -1,3 +1,3 @@
-module github.com/sudotoame/devops-practice-1
+module devops-practice-1
 
 go 1.25.10

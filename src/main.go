@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/sudotoame/devops-practice-1/logic"
-	"github.com/sudotoame/devops-practice-1/server"
+	"devops-practice-1/logic"
+	"devops-practice-1/server"
 )
 
 func main() {
